@@ -133,39 +133,25 @@ require(['vs/editor/editor.main'], function () {
         return errors;
     }
 
-    // 绑定校验按钮
-    document.getElementById('validateBtn').addEventListener('click', () => {
+    document.getElementById('validateBtn').addEventListener('click', function() {
         const query = editor.getValue();
         const errors = validateJQL(query);
+
         const outputElement = document.getElementById('output');
-        if (errors.length === 0) {
-            outputElement.textContent = "Syntax is valid!";
-            outputElement.style.color = "green";
+        if (errors.length > 0) {
+            outputElement.innerHTML = `<span class="syntax-error">Syntax Errors:</span> <br> - ${errors.join('<br> - ')}`;
+            outputElement.classList.add('visible');
         } else {
-            outputElement.textContent = `Syntax Errors:\n- ${errors.join('\n- ')}`;
-            outputElement.style.color = "red";
+            outputElement.innerHTML = 'No syntax errors detected.';
+            outputElement.classList.remove('visible');
+            outputElement.style.backgroundColor = '#d4edda'; // 成功信息背景色
+            outputElement.style.color = '#155724'; // 成功信息字体色
         }
     });
 
-    // 绑定提交按钮
-    document.getElementById('submitBtn').addEventListener('click', () => {
+    document.getElementById('submitBtn').addEventListener('click', function() {
         const query = editor.getValue();
-        const outputElement = document.getElementById('output');
-        outputElement.textContent = `Submitted Query:\n${query}`;
-        outputElement.style.color = "blue";
-
-        // 模拟提交功能
-        // fetch('/api/submit', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify({ query }),
-        // }).then((response) => {
-        //     if (response.ok) {
-        //         outputElement.textContent = "Query submitted successfully!";
-        //     } else {
-        //         outputElement.textContent = "Failed to submit query.";
-        //     }
-        // });
+        alert(`Submitted: ${query}`);
     });
 });
 

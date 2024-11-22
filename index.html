@@ -10,6 +10,7 @@
     </style>
 </head>
 <body>
+    <h1>JQL Editor</h1>
     <div id="container"></div>
     <div class="controls">
         <button id="validateBtn">Validate Syntax</button>
@@ -17,12 +18,6 @@
         <div id="output"></div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.0/min/vs/loader.min.js"></script>
-    <script>
-        require.config({ paths: { vs: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.0/min/vs' } });
-        require(['vs/editor/editor.main'], function() {
-            // Main script logic
-        });
-    </script>
     <!-- 动态加载 main.js -->
     <script>
         const timestamp = new Date().getTime();

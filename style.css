@@ -1,23 +1,111 @@
+/* 全局设置 */
 body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
     margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-#container {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100vh;
-    width: 100%;
+    flex-direction: column;
 }
 
+h1 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #4a4a4a;
+    margin-bottom: 30px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+/* 编辑器容器样式 */
+#container {
+    width: 90%;
+    max-width: 800px;
+    height: 400px;
+    border: 1px solid #ddd;
+    background-color: #282c34;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+/* 控制面板 */
 .controls {
-    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    margin-top: -10px;
+}
+
+/* 按钮样式 */
+.controls button {
+    background: linear-gradient(145deg, #6c85f7, #4e6cfa);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 16px;
+    border-radius: 30px;
+    margin: 10px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 200px;
+}
+
+/* 按钮悬停效果 */
+.controls button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.controls button:active {
+    transform: translateY(0);
+}
+
+/* 错误信息显示 */
+#output {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    width: 100%;
+    max-width: 800px;
+    display: none;
     text-align: center;
 }
 
-#output {
-    margin-top: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    background-color: #f9f9f9;
-    font-family: monospace;
-    text-align: left;
+#output.visible {
+    display: block;
+}
+
+/* 错误信息中的关键字 */
+.syntax-error {
+    font-weight: bold;
+    color: #721c24;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    #container {
+        width: 100%;
+        height: 350px;
+    }
+
+    .controls {
+        width: 90%;
+    }
+
+    .controls button {
+        width: 100%;
+    }
 }
