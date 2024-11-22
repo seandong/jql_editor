@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQL Editor</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.0/min/vs/editor/editor.main.css">
+    <style>
+        #container { height: 300px; border: 1px solid #ccc; margin: 20px; }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <div class="controls">
+        <button id="validateBtn">Validate Syntax</button>
+        <button id="submitBtn">Submit</button>
+        <div id="output"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.0/min/vs/loader.min.js"></script>
+    <script>
+        require.config({ paths: { vs: 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.34.0/min/vs' } });
+        require(['vs/editor/editor.main'], function() {
+            // Main script logic
+        });
+    </script>
+    <!-- 动态加载 main.js -->
+    <script>
+        const timestamp = new Date().getTime();
+        const script = document.createElement('script');
+        script.src = `./main.js?ts=${timestamp}`;
+        document.body.appendChild(script);
+    </script>
+</body>
+</html>
